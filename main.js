@@ -1,12 +1,13 @@
-var inObj = {};
 var button = document.getElementById("growTree");
 
 //BUTTON ACTION
 button.addEventListener("click", function myKeyPress(){
 	//CHRISTMAS TREE PATTERN
 		//ENTER VALUES FROM INPUTS
-		inObj.char = document.getElementById("char").value;
-		inObj.num = document.getElementById('height').value;
+		var inObj = {
+			char: document.getElementById("char").value,
+			num: document.getElementById('height').value
+		};
 		
 		//CHECK BOTH FIELDS FOR ENTRY
 		if (inObj.char === '' || inObj.num === '') { 
@@ -18,18 +19,21 @@ button.addEventListener("click", function myKeyPress(){
 		
 		//BUILD TREE
 		} else {
+
+		var tree = [];
 		for (i = 0; i < inObj.num; i++) {
 			var treeHeight = ((inObj.num - 1) - i);
 			var treeChar = ((2 * i) + 1);
-			var tree = [];
+			
 			for (j = 0; j < treeHeight; j++) {
 				tree.push(" ");
 			}
 			for (k = 0; k < treeChar; k++) {
 				tree.push(inObj.char);
 			}
-			console.log(tree.toString().replace(/,/g, ''));
+			tree.push("\n")
 		}
+		console.log(tree.toString().replace(/,/g, ''));
 	}
 });
 
