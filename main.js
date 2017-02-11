@@ -1,34 +1,43 @@
-//ENTER KEY FUNCTIONALITY
-function enterKey(event) {
-    var x = event.keyCode;
-    if (x === 13) {  // 13 is the ENTER keycode
-        alert ("You pressed the Enter key!");
-    }
-}
-
-//Button Action - Bringing it all together
+var inObj = {};
 var button = document.getElementById("growTree");
 
-button.addEventListener("click", function(){
+//BUTTON ACTION
+button.addEventListener("click", function myKeyPress(){
 	//CHRISTMAS TREE PATTERN
-	var char = document.getElementById("char").value;
-	var num = document.getElementById('height').value;
-
+		//ENTER VALUES FROM INPUTS
+		inObj.char = document.getElementById("char").value;
+		inObj.num = document.getElementById('height').value;
 		var tree = [];
-
-		for (i = 0; i < (num - 1); i++) {
+		//CHECK BOTH FIELDS FOR ENTRY
+		if (inObj.char === '' || inObj.num === '') { 
+			alert("You must fill in both fields");
+		//CHECK HEIGHT FIELD FOR NUMBER ENTRY
+		} else if (isNaN(inObj.num)) {
+			alert("You must enter a number");
+		//BUILD TREE
+		} else {
+		for (i = 0; i < (inObj.num - 1); i++) {
 			tree.push(" ");
 		}
 
-		tree.push(char);
+		tree.push(inObj.char);
 		console.log(tree.toString().replace(/,/g, ''));
 
-		for (j = 0; j < (num-1); j++) {
+		for (j = 0; j < (inObj.num-1); j++) {
 			tree.splice(0, 1);
-			tree.push(char, char);
+			tree.push(inObj.char, inObj.char);
 			console.log(tree.toString().replace(/,/g, ''));
 		}
+	}
 });
+
+//ENTER KEY ACTION
+var enterKey = function(e) {
+if(e.keyCode === 13) { // 13 is keycode for the ENTER key
+        document.getElementById("growTree").click();
+    }
+
+}
 
 
 

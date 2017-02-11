@@ -4,11 +4,11 @@
 	<title>Grow Your Tree</title>
 </head>
 	<body>
-		<label for="char">Type your character</label><br>
-		<input id="char" type="text" name="char" onkeydown="enterKey(event)"><br>
 		
-		<label for="height">How tall?</label><br>
-		<input id="height" type="text" name="height" onkeydown="enterKey(event)"><br>
+		<input id="char" type="text" name="char" placeholder="Which character should be used?" maxlength="1" onkeypress="return enterKey(event)"><br>
+		
+
+		<input id="height" type="text" name="height" placeholder="How tall should the tree be?" onkeypress="return enterKey(event)"><br>
 		
 		<button id="growTree">Grow Your Tree!</button>
 		<script type="text/javascript" src="main.js"></script>
